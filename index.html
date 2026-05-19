@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SRX-Studio — Développement Mobile</title>
+    <meta name="description" content="SRX-Studio est un studio de développement d'applications mobiles. Découvrez nos applications et nos politiques de confidentialité." />
+    <meta property="og:title" content="SRX-Studio — Développement Mobile" />
+    <meta property="og:description" content="Studio de développement d'applications mobiles. Applications disponibles sur Google Play et App Store." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232563EB'/%3E%3Ctext x='16' y='21' font-size='16' font-family='Arial' fill='white' text-anchor='middle' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="/assets/index-oOnyg29-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CjKYK-zj.css">
+    <script type="module">
+if (window.self === window.top) {
+  let lastPath = "";
+  function getPageNameFromPath(path) {
+    const segments = path.split("/").filter(Boolean);
+    return segments[0] || null;
+  }
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastPath) return;
+    lastPath = path;
+    const pageName = getPageNameFromPath(path) || "home";
+    const appId = "";
+    if (!appId) return;
+    fetch(`/api/app-logs/${appId}/log-user-in-app/${pageName}`, {
+      method: "POST",
+    }).catch(() => {});
+  }
+  const originalPushState = history.pushState.bind(history);
+  history.pushState = function (...args) {
+    originalPushState(...args);
+    trackPageView();
+  };
+  const originalReplaceState = history.replaceState.bind(history);
+  history.replaceState = function (...args) {
+    originalReplaceState(...args);
+    trackPageView();
+  };
+  window.addEventListener("popstate", trackPageView);
+  trackPageView();
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
