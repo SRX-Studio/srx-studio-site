@@ -2,6 +2,17 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
+    
+    <script>
+      (function () {
+        var redirectPath = sessionStorage.getItem("redirectPath");
+        if (redirectPath) {
+          sessionStorage.removeItem("redirectPath");
+          window.history.replaceState(null, "", redirectPath);
+        }
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SRX-Studio — Développement Mobile</title>
     <meta name="description" content="SRX-Studio est un studio de développement d'applications mobiles. Découvrez nos applications et nos politiques de confidentialité." />
